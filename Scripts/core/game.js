@@ -1,5 +1,18 @@
 /// <reference path="_reference.ts"/>
-// MAIN GAME FILE
+/*
+Author: Douglas Krein
+Last Modified by: Douglas Krein
+Last Modified: 02-03-2016
+File description:
+- Controls the general game information, like creating tower and controlls
+
+Revision:
+1 - cubes created
+2 - controls to rotate added
+3 - control to add texture
+4 - control to random colors
+5 - control to resize tower
+*/
 // THREEJS Aliases
 var Scene = THREE.Scene;
 var Renderer = THREE.WebGLRenderer;
@@ -62,7 +75,9 @@ var game = (function () {
         scene.add(axes);
         console.log("Added Axis Helper to scene...");
         //Add a Plane to the Scene
-        plane = new gameObject(new PlaneGeometry(60, 110, 1, 1), new LambertMaterial({ map: ImageUtils.loadTexture('../../Assets/Images/grass.jpg') }), 0, 0, 0);
+        plane = new gameObject(new PlaneGeometry(60, 110, 1, 1), 
+        //new LambertMaterial({map: ImageUtils.loadTexture('../../Assets/Images/grass.jpg')}), -- TEXTUER NOT RECEIVING SHADOW, OR ITS DIFFCULT TO SEE
+        new LambertMaterial({ color: 0x339966 }), 0, 0, 0);
         plane.rotation.x = -0.5 * Math.PI;
         scene.add(plane);
         console.log("Added Plane Primitive to scene...");
@@ -74,7 +89,7 @@ var game = (function () {
         scene.add(ambientLight);
         console.log("Added an Ambient Light to Scene");
         // Add a SpotLight to the scene
-        spotLight = new SpotLight(0xffffff);
+        spotLight = new SpotLight(0xffffff, 2);
         spotLight.position.set(-40, 60, 20);
         spotLight.castShadow = true;
         scene.add(spotLight);

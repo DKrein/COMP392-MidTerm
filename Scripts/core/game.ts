@@ -1,6 +1,19 @@
 /// <reference path="_reference.ts"/>
 
-// MAIN GAME FILE
+/*
+Author: Douglas Krein
+Last Modified by: Douglas Krein
+Last Modified: 02-03-2016
+File description: 
+- Controls the general game information, like creating tower and controlls
+
+Revision:
+1 - cubes created
+2 - controls to rotate added
+3 - control to add texture
+4 - control to random colors
+5 - control to resize tower
+*/
 
 // THREEJS Aliases
 import Scene = THREE.Scene;
@@ -77,7 +90,9 @@ var game = (() => {
         //Add a Plane to the Scene
         plane = new gameObject(
             new PlaneGeometry(60, 110, 1, 1),
-            new LambertMaterial({map: ImageUtils.loadTexture('../../Assets/Images/grass.jpg')}),
+            //new LambertMaterial({map: ImageUtils.loadTexture('../../Assets/Images/grass.jpg')}), -- TEXTUER NOT RECEIVING SHADOW, OR ITS DIFFCULT TO SEE
+            new LambertMaterial({color: 0x339966}),
+            
             0, 0, 0);
 
         plane.rotation.x = -0.5 * Math.PI;
@@ -100,14 +115,14 @@ var game = (() => {
         console.log("Added an Ambient Light to Scene");
         
         // Add a SpotLight to the scene
-	    spotLight = new SpotLight(0xffffff);
+	    spotLight = new SpotLight(0xffffff,2);
 	    spotLight.position.set(-40, 60, 20);
 	    spotLight.castShadow = true;
 	    scene.add(spotLight);
 	    console.log("Added a SpotLight Light to Scene");
         
-        towerTexture = new LambertMaterial({map: ImageUtils.loadTexture('../../Assets/Images/stone.jpg')})
-        plainColor = new LambertMaterial({color: 0xffffff})
+        towerTexture = new LambertMaterial({map: ImageUtils.loadTexture('../../Assets/Images/stone.jpg')});
+        plainColor = new LambertMaterial({color: 0xffffff});
         
         
         towerStore1 = new gameObject(new CubeGeometry(3, 2, 3), new LambertMaterial({color: 0x336666}), 0, 1, 0);

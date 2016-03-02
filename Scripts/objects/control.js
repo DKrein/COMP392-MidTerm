@@ -1,4 +1,17 @@
 /// <reference path="../../typings/tsd.d.ts"/>
+/*
+Author: Douglas Krein
+Last Modified by: Douglas Krein
+Last Modified: 02-03-2016
+File description:
+- Here is where the controls are created and controled
+
+Revision:
+1 - controls to rotate added
+2 - control to add texture
+3 - control to random colors
+4 - control to resize tower
+*/
 var objects;
 (function (objects) {
     // CONTROL CLASS ++++++++++++++++++++++++++++++++++++++++++
